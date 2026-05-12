@@ -14,6 +14,8 @@
     <li><?=$serie;?></li>
     <!-- encerra o foreach-->
     <?php endforeach; ?>
+
+    <a>Alura - Conhecendo o Blade</a>
 </ul>
 </body>
 </html>

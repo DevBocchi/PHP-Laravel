@@ -15,10 +15,12 @@ class SeriesController extends Controller
        ];
 
        /* retorna a view para o `listar-series`*/
-       return view('listar-series', [
+       return view('listar-series')->with('series', $series);
+           /* com o uso do Blade, se utiliza outro metodo ao inves do compact()
+              se usiliza ->with()*/
+           /* compact faz a mesma coisa, so que de forma compacta */
            /* 'series' - variavel criado na view/`listar-series` | $series - variavel criada no `SeriesController`*/
-           'series' => $series
-       ]);
+
    }
 
 }
