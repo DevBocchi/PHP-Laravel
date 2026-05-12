@@ -9,11 +9,15 @@
 <h1>Series</h1>
 <ul>
     <!-- foreach - executa os dados da variavel | $series - variavel da classe controller | $serie - variavel do proprio foreach -->
-    <?php foreach ($series as $serie) : ?>
+    {{-- Agora sera usado o Blade --}}
+    {{-- a Abertura <?php virou @ --}}
+    @foreach ($series as $serie)
     <!-- acessa a variavel do foreach-->
-    <li><?=$serie;?></li>
+    {{-- e o echo virou {{  }} --}}
+    <li>{{ $serie }}</li>
     <!-- encerra o foreach-->
-    <?php endforeach; ?>
+    {{-- a Abertura <?php virou @ --}}
+    @endforeach
 
     <a>Alura - Conhecendo o Blade</a>
 </ul>
