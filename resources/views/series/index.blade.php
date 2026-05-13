@@ -1,5 +1,8 @@
 {{-- a tag x é acompanhada pelo nome da classe, e esta passando o titulo --}}
 <x-layout title="Series">
+    {{--botao adicionado para enviar o usuario para adicionar nova serie--}}
+    <a href="/series/criar">Adicionar</a>
+
     <ul>
         <!-- foreach - executa os dados da variavel | $series - variavel da classe controller | $serie - variavel do proprio foreach -->
         {{-- Agora sera usado o Blade --}}
@@ -14,5 +17,5 @@
     </ul>
 
     <h3>Aonde eu parei na Alura: </h3>
-    <a> Criando um Layout </a>
+    <a> Laravel Mix - Entendendo o Conceito </a>
 </x-layout>
