@@ -21,7 +21,13 @@ class SeriesController extends Controller
               se usiliza ->with()*/
            /* compact faz a mesma coisa, so que de forma compacta */
            /* 'series' - variavel criado na view/`listar-series` | $series - variavel criada no `SeriesController`*/
+   }
 
+   public function create(Request $request)
+   {
+       /* Realiza o retorno da view
+       o / nao é utlizado, se usa o . no lugar*/
+       return view('series.create');
    }
 
 }
