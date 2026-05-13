@@ -1,21 +1,27 @@
-{{-- a tag x é acompanhada pelo nome da classe, e esta passando o titulo --}}
+{{-- Renderiza o componente de layout padrão (x-layout) passando "Series" como título --}}
 <x-layout title="Series">
-    {{--botao adicionado para enviar o usuario para adicionar nova serie--}}
+
+    {{-- Link que direciona o usuário para o formulário de criação de uma nova série --}}
     <a href="/series/criar">Adicionar</a>
 
     <ul>
-        <!-- foreach - executa os dados da variavel | $series - variavel da classe controller | $serie - variavel do proprio foreach -->
-        {{-- Agora sera usado o Blade --}}
-        {{-- a Abertura <?php virou @ --}}
+        {{--
+            Itera sobre a coleção $series enviada pelo Controller.
+            Nota de estudo: No Blade, diretivas começam com '@', substituindo o "<?php foreach"
+        --}}
         @foreach ($series as $serie)
-        <!-- acessa a variavel do foreach-->
-        {{-- e o echo virou {{  }} --}}
-        <li>{{ $serie }}</li>
-        <!-- encerra o foreach-->
-        {{-- a Abertura <?php virou @ --}}
+
+            {{--
+                Imprime a variável atual do loop.
+                Nota de estudo: A sintaxe {{ }} substitui o "<?php echo" e já protege contra XSS
+            --}}
+            <li>{{ $serie }}</li>
+
         @endforeach
     </ul>
 
+    {{-- Marcador de progresso do curso --}}
     <h3>Aonde eu parei na Alura: </h3>
     <a> Laravel Mix - Entendendo o Conceito </a>
+
 </x-layout>

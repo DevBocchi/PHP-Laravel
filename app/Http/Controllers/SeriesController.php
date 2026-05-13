@@ -1,33 +1,44 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 
 class SeriesController extends Controller
 {
-   public function index(Request $request)
-   {
-       /* variavel criada para salvar senhas e chamado pelo `lista-series` */
-       $series = [
-           'Phineas and Ferb',
-           'Avatar',
-           'The Mentalist'
-       ];
+    /**
+     * Exibe a lista de séries.
+     */
+    public function index(Request $request)
+    {
+        // Array criado para armazenar as séries (dados estáticos por enquanto)
+        $series = [
+            'Phineas and Ferb',
+            'Avatar',
+            'The Mentalist'
+        ];
 
-       /* retorna a view para o `listar-series`*/
-       /* o / no Blade para separação é o . */
-       return view('series.index')->with('series', $series);
-           /* com o uso do Blade, se utiliza outro metodo ao inves do compact()
-              se usiliza ->with()*/
-           /* compact faz a mesma coisa, so que de forma compacta */
-           /* 'series' - variavel criado na view/`listar-series` | $series - variavel criada no `SeriesController`*/
-   }
+        /*
+         * Retorna a view localizada em resources/views/series/index.blade.php.
+         *
+         * Notas de estudo:
+         * - Diretórios de views: Usa-se o ponto (.) como separador de pastas em vez da barra (/).
+         * - Passagem de parâmetros: O método ->with('nomeNaView', $variavelNoController) envia a variável.
+         * - Dica: Poderíamos usar o compact() perfeitamente aqui também!
+         *   Exemplo: return view('series.index', compact('series'));
+         */
+        return view('series.index')->with('series', $series);
+    }
 
-   public function create(Request $request)
-   {
-       /* Realiza o retorno da view
-       o / nao é utlizado, se usa o . no lugar*/
-       return view('series.create');
-   }
-
+    /**
+     * Exibe o formulário para adicionar uma nova série.
+     */
+    public function create(Request $request)
+    {
+        /*
+         * Retorna a view do formulário (resources/views/series/create.blade.php).
+         * Lembrando que 'series.create' aponta para a pasta 'series' e o arquivo 'create'.
+         */
+        return view('series.create');
+    }
 }

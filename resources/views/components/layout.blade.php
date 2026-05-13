@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{-- esta recebendo a a variavel do index --}}
+
+    {{--
+        Imprime o valor do atributo 'title' passado na tag do componente.
+        Exemplo: ao usar <x-layout title="Series">, a variável $title recebe "Series".
+    --}}
     <title>{{ $title }}</title>
 </head>
 <body>
-<h1> {{ $title }}</h1>
 
-    {{-- O uso do $slot é para verificar o que tem dentro da tag <x-layout> --}}
-    {{ $slot }}
+{{-- Reutiliza a variável $title para o cabeçalho principal (h1) da página --}}
+<h1>{{ $title }}</h1>
+
+{{--
+    Variável especial do Blade para componentes de layout.
+    O $slot injeta dinamicamente todo o conteúdo (HTML ou texto) que for colocado
+    entre as tags de abertura e fechamento lá na view que chamou o componente
+    (ou seja, tudo que fica entre <x-layout> e </x-layout>).
+--}}
+{{ $slot }}
+
 </body>
 </html>
