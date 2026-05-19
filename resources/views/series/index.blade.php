@@ -22,6 +22,6 @@
 
     {{-- Marcador de progresso do curso --}}
     <h3>Aonde eu parei na Alura: </h3>
-    <a> Laravel Mix - Entendendo o Conceito </a>
+    <a> Laravel Mix - Instalando o Bootstrap </a>
 
 </x-layout>

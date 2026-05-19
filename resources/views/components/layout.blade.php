@@ -9,6 +9,8 @@
         Exemplo: ao usar <x-layout title="Series">, a variável $title recebe "Series".
     --}}
     <title>{{ $title }}</title>
+    {{-- usando o asset('') e uma boa pratica para caso utilize de outro lugar --}}
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 </head>
 <body>
 
