@@ -23,7 +23,7 @@
     </ul>
 
     {{-- Marcador de progresso do curso --}}
-    {{--  <h3>Aonde eu parei na Alura: </h3>
-    <a> Laravel Mix - Estilizando as Views </a>--}}
+    <h3>Aonde eu parei na Alura: </h3>
+    <a> Models - DB Facade</a>
 
 </x-layout>
