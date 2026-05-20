@@ -9,21 +9,20 @@
         Exemplo: ao usar <x-layout title="Series">, a variável $title recebe "Series".
     --}}
     <title>{{ $title }}</title>
-    {{-- usando o asset('') e uma boa pratica para caso utilize de outro lugar --}}
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    @vite(['resources/css/app.scss', 'resources/js/app.js'])
 </head>
 <body>
+<div class="container">
+    {{-- Reutiliza a variável $title para o cabeçalho principal (h1) da página --}}
+    <h1>{{ $title }}</h1>
 
-{{-- Reutiliza a variável $title para o cabeçalho principal (h1) da página --}}
-<h1>{{ $title }}</h1>
-
-{{--
-    Variável especial do Blade para componentes de layout.
-    O $slot injeta dinamicamente todo o conteúdo (HTML ou texto) que for colocado
-    entre as tags de abertura e fechamento lá na view que chamou o componente
-    (ou seja, tudo que fica entre <x-layout> e </x-layout>).
---}}
-{{ $slot }}
-
+    {{--
+        Variável especial do Blade para componentes de layout.
+        O $slot injeta dinamicamente todo o conteúdo (HTML ou texto) que for colocado
+        entre as tags de abertura e fechamento lá na view que chamou o componente
+        (ou seja, tudo que fica entre <x-layout> e </x-layout>).
+    --}}
+    {{ $slot }}
+</div>
 </body>
 </html>
