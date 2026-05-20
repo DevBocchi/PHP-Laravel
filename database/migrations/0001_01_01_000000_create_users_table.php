@@ -1,5 +1,39 @@
 <?php
 
+/**
+ * Migration: Criação das tabelas iniciais do sistema.
+ *
+ * Este arquivo foi gerado automaticamente pelo Artisan. Para criar uma nova migration, use:
+ *   php artisan make:migration nome_da_migration
+ *
+ * Para executar todas as migrations pendentes e atualizar o banco de dados, use:
+ *   php artisan migrate
+ *
+ * Tabelas criadas nesta migration:
+ *
+ * - users:
+ *     - id              → chave primária auto-incremental
+ *     - name            → nome do usuário (string)
+ *     - email           → e-mail único do usuário (string)
+ *     - email_verified_at → data de verificação do e-mail (timestamp, nullable)
+ *     - password        → senha criptografada (string)
+ *     - remember_token  → token para "lembrar sessão" (gerado por rememberToken())
+ *     - created_at / updated_at → timestamps automáticos (gerados por timestamps())
+ *
+ * - password_reset_tokens:
+ *     - email           → e-mail como chave primária (string)
+ *     - token           → token de redefinição de senha (string)
+ *     - created_at      → data de criação do token (timestamp, nullable)
+ *
+ * - sessions:
+ *     - id              → identificador da sessão como chave primária (string)
+ *     - user_id         → referência opcional ao usuário (foreignId, nullable)
+ *     - ip_address      → endereço IP do cliente (string 45, nullable)
+ *     - user_agent      → informações do navegador/cliente (text, nullable)
+ *     - payload         → dados da sessão serializados (longText)
+ *     - last_activity   → timestamp da última atividade (integer, indexado)
+ */
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
