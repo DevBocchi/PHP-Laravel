@@ -17,7 +17,7 @@
                 Nota de estudo: A sintaxe {{ }} substitui o "<?php echo" e já protege contra XSS
             --}}
             {{-- list-group-item é cada item da lista. Aplicado em <li> ou <a>, estiliza cada entrada individualmente. --}}
-            <li class="list-group-item">{{ $serie }}</li>
+            <li class="list-group-item">{{ $serie->nome }}</li>
 
         @endforeach
     </ul>

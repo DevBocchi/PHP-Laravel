@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use function Laravel\Prompts\select;
 
 class SeriesController extends Controller
 {
@@ -12,11 +14,8 @@ class SeriesController extends Controller
     public function index(Request $request)
     {
         // Array criado para armazenar as séries (dados estáticos por enquanto)
-        $series = [
-            'Phineas and Ferb',
-            'Avatar',
-            'The Mentalist'
-        ];
+        $series = DB::select('SELECT nome FROM series;');
+       //dd($series); // dump and die
 
         /*
          * Retorna a view localizada em resources/views/series/index.blade.php.
@@ -47,10 +46,8 @@ class SeriesController extends Controller
         $nomeSerie = $request->input('nome');
 
         if(DB::insert('INSERT INTO series (nome) VALUES (?)', [$nomeSerie])) {
-
             return "OK";
         } else {
-
             return "ERRO";
         }
     }
