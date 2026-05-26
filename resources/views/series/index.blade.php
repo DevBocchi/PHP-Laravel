@@ -24,6 +24,6 @@
 
     {{-- Marcador de progresso do curso --}}
     <h3>Aonde eu parei na Alura: </h3>
-    <a> Models - DB Facade</a>
+    <a> Models - Eloquent ORM</a>
 
 </x-layout>

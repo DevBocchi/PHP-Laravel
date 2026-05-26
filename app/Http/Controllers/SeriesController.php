@@ -41,4 +41,17 @@ class SeriesController extends Controller
          */
         return view('series.create');
     }
+
+    public function store(Request $request)
+    {
+        $nomeSerie = $request->input('nome');
+
+        if(DB::insert('INSERT INTO series (nome) VALUES (?)', [$nomeSerie])) {
+
+            return "OK";
+        } else {
+
+            return "ERRO";
+        }
+    }
 }

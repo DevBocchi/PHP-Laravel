@@ -35,3 +35,5 @@ Route::get('/series', [SeriesController::class, 'index']);
  * Direciona requisições da URL '/series/criar' para o método 'create' do SeriesController.
  */
 Route::get('/series/criar', [SeriesController::class, 'create']);
+
+Route::post('/series/salvar', [SeriesController::class, 'store']);
