@@ -9,6 +9,7 @@
         Exemplo: ao usar <x-layout title="Series">, a variável $title recebe "Series".
     --}}
     <title>{{ $title }}</title>
+    @vite(['resources/css/app.scss', 'resources/js/app.js'])
 </head>
 <body>
 <div class="container">

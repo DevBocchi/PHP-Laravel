@@ -12,10 +12,10 @@ class SeriesController extends Controller
     /**
      * Exibe a lista de séries.
      */
-    public function index(Request $request)
+    public function index()
     {
         // Array criado para armazenar as séries usando a Class Serie
-        $series = Serie::all();
+        $series = Serie::query()->orderBy('nome')->get();
        //dd($series); // dump and die
 
         /*
