@@ -2,7 +2,7 @@
 <x-layout title="Series">
 
     {{-- Link que direciona o usuário para o formulário de criação de uma nova série --}}
-    <a href="/series/criar" class="btn btn-dark mb-2">Adicionar</a>
+    <a href="{{ route('series.create') }}" class="btn btn-dark mb-2">Adicionar</a>
 
     {{-- list-group é o container da lista. Aplicado em uma <ul> ou <div>, define o agrupamento visual. --}}
     <ul class="list-group">
@@ -17,13 +17,23 @@
                 Nota de estudo: A sintaxe {{ }} substitui o "<?php echo" e já protege contra XSS
             --}}
             {{-- list-group-item é cada item da lista. Aplicado em <li> ou <a>, estiliza cada entrada individualmente. --}}
-            <li class="list-group-item">{{ $serie->nome }}</li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ $serie->nome }}
+
+                <form action="{{ route('series.destroy', $serie->id) }}" method="POST" >`
+                    @csrf
+                    <button class="btn btn-danger btn-sm">
+                        X
+                    </button>
+                </form>
+
+            </li>
 
         @endforeach
     </ul>
 
     {{-- Marcador de progresso do curso --}}
     <h3>Aonde eu parei na Alura: </h3>
-    <a> Models - Eloquent ORM</a>
+    <a> Excluindo uma série </a>
 
 </x-layout>

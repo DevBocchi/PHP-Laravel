@@ -1,6 +1,6 @@
 {{-- Adiciona nova serie --}}
 <x-layout title="Nova Serie">
-    <form action="/series/salvar" method="post">
+    <form action="{{ route('series.store') }}" method="post">
         @csrf
         <div class="mb-3">
             <label for="nome" class="form-label">Nome:</label>

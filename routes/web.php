@@ -14,8 +14,14 @@ use Illuminate\Support\Facades\Route;
 
 // Rota padrão do Laravel (página inicial)
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/series');
 });
+
+Route::resource('/series', SeriesController::class)
+    ->only(['index', 'create', 'store']);
+
+Route::post('/series/destroy/{serie}', [SeriesController::class, 'destroy'])
+    ->name('series.destroy');
 
 /*
  * Rota para listar as séries.
@@ -26,14 +32,17 @@ Route::get('/', function () {
  * - '/series': O caminho (URL) acessado no navegador.
  * - SeriesController::class: O Controller responsável por processar a requisição.
  * - 'index': A função dentro do Controller que será executada.
+ *
+ * Route::get('/series', [SeriesController::class, 'index']);
  */
-Route::get('/series', [SeriesController::class, 'index']);
+
 
 /*
  * Rota para exibir o formulário de criação de uma nova série.
  *
  * Direciona requisições da URL '/series/criar' para o método 'create' do SeriesController.
+ *
+ * Route::get('/series/criar', [SeriesController::class, 'create']);
+ *
+ * Route::post('/series/salvar', [SeriesController::class, 'store']);
  */
-Route::get('/series/criar', [SeriesController::class, 'create']);
-
-Route::post('/series/salvar', [SeriesController::class, 'store']);

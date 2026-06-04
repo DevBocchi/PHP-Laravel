@@ -44,19 +44,25 @@ class SeriesController extends Controller
 
     public function store(Request $request)
     {
-        /** @var string $nomeSerie Nome da série extraído do corpo da requisição */
-        $nomeSerie = $request->input('nome');
+        Serie::create($request->all());
 
-        /** @var Serie $serie Nova instância do model Serie (equivalente a um registro em branco na tabela) */
+        /* codigo a cima é o resumo do codigo abaixo
+        @var string $nomeSerie Nome da série extraído do corpo da requisição
+        $nomeSerie = $request->input->nome;
+        @var Serie $serie Nova instância do model Serie (equivalente a um registro em branco na tabela)
         $serie = new Serie();
-
-        /** Atribui o nome recebido ao campo 'nome' do model antes de persistir */
+        Atribui o nome recebido ao campo 'nome' do model antes de persistir
         $serie->nome = $nomeSerie;
-
-        /** Gera e executa o INSERT na tabela 'series' com os dados atribuídos */
+        Gera e executa o INSERT na tabela 'series' com os dados atribuídos
         $serie->save();
+        */
 
         /** Redireciona o usuário para a listagem após salvar com sucesso */
-        return redirect('/series');
+        return to_route('series.index');
+    }
+
+    public function destroy(Request $request)
+    {
+        dd($request->serie);
     }
 }
