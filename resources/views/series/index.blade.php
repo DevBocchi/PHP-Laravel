@@ -4,6 +4,12 @@
     {{-- Link que direciona o usuário para o formulário de criação de uma nova série --}}
     <a href="{{ route('series.create') }}" class="btn btn-dark mb-2">Adicionar</a>
 
+    @if(session('mensagem.sucesso'))
+    <div class="alert alert-success">
+        {{ session('mensagem.sucesso') }}
+    </div>
+    @endif
+
     {{-- list-group é o container da lista. Aplicado em uma <ul> ou <div>, define o agrupamento visual. --}}
     <ul class="list-group">
         {{--
@@ -20,8 +26,9 @@
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 {{ $serie->nome }}
 
-                <form action="{{ route('series.destroy', $serie->id) }}" method="POST" >`
+                <form action="{{ route('series.destroy', $serie->id) }}" method="POST" >
                     @csrf
+                    @method('DELETE')
                     <button class="btn btn-danger btn-sm">
                         X
                     </button>

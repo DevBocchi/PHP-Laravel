@@ -12,11 +12,14 @@ class SeriesController extends Controller
     /**
      * Exibe a lista de séries.
      */
-    public function index()
+    public function index(Request $request)
     {
         // Array criado para armazenar as séries usando a Class Serie
         $series = Serie::query()->orderBy('nome')->get();
        //dd($series); // dump and die
+
+        $mensagemSucesso = session('mensagem.sucesso');
+
 
         /*
          * Retorna a view localizada em resources/views/series/index.blade.php.
@@ -27,7 +30,7 @@ class SeriesController extends Controller
          * - Dica: Poderíamos usar o compact() perfeitamente aqui também!
          *   Exemplo: return view('series.index', compact('series'));
          */
-        return view('series.index')->with('series', $series);
+        return view('series.index')->with('series', $series)->with('mensagem.sucesso', $mensagemSucesso);
     }
 
     /**
@@ -46,6 +49,8 @@ class SeriesController extends Controller
     {
         Serie::create($request->all());
 
+        $request->session()->flash('mensagem.sucesso', 'Series cadastrado com sucesso!');
+
         /* codigo a cima é o resumo do codigo abaixo
         @var string $nomeSerie Nome da série extraído do corpo da requisição
         $nomeSerie = $request->input->nome;
@@ -63,6 +68,9 @@ class SeriesController extends Controller
 
     public function destroy(Request $request)
     {
-        dd($request->serie);
+        Serie::destroy($request->series);
+        $request->session()->flash('mensagem.sucesso', 'Serie removida com sucesso!');
+
+        return to_route('series.index');
     }
 }

@@ -18,10 +18,9 @@ Route::get('/', function () {
 });
 
 Route::resource('/series', SeriesController::class)
-    ->only(['index', 'create', 'store']);
+    ->only(['index', 'create', 'store', 'destroy']);
 
-Route::post('/series/destroy/{serie}', [SeriesController::class, 'destroy'])
-    ->name('series.destroy');
+
 
 /*
  * Rota para listar as séries.
