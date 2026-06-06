@@ -30,7 +30,8 @@ class SeriesController extends Controller
          * - Dica: Poderíamos usar o compact() perfeitamente aqui também!
          *   Exemplo: return view('series.index', compact('series'));
          */
-        return view('series.index')->with('series', $series)->with('mensagem.sucesso', $mensagemSucesso);
+        return view('series.index')
+            ->with('series', $series)->with('mensagem.sucesso', $mensagemSucesso);
     }
 
     /**
@@ -47,9 +48,8 @@ class SeriesController extends Controller
 
     public function store(Request $request)
     {
-        Serie::create($request->all());
+        $serie = Serie::create($request->all());
 
-        $request->session()->flash('mensagem.sucesso', "Serie, '{$serie->nome}' cadastrado com sucesso!");
 
         /* codigo a cima é o resumo do codigo abaixo
         @var string $nomeSerie Nome da série extraído do corpo da requisição
@@ -63,14 +63,29 @@ class SeriesController extends Controller
         */
 
         /** Redireciona o usuário para a listagem após salvar com sucesso */
-        return to_route('series.index');
+        return to_route('series.index')
+            ->with('mensagem.sucesso', "Serie, '{$serie->nome}' cadastrado com sucesso!");
     }
 
-    public function destroy(Request $request)
+    public function destroy(Serie $series, Request $request)
     {
-        Serie::destroy($request->series);
-        $request->session()->flash('mensagem.sucesso', 'Serie removida com sucesso!');
 
-        return to_route('series.index');
+        $series->delete();
+
+        return to_route('series.index')
+            ->with('mensagem.sucesso', "Serie, '{$series->nome}' removida com sucesso!");
+    }
+
+    public function edit(Serie $series)
+    {
+        return view('series.edit')->with('serie', $series);
+    }
+
+    public function update(Request $request, Serie $series)
+    {
+        $series->fill($request->all())->save();
+
+        return to_route('series.index')
+            ->with('mensagem.sucesso', "Serie, '{$series->nome}' atualizada com sucesso!");
     }
 }
