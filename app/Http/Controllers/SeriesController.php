@@ -49,7 +49,7 @@ class SeriesController extends Controller
     {
         Serie::create($request->all());
 
-        $request->session()->flash('mensagem.sucesso', 'Series cadastrado com sucesso!');
+        $request->session()->flash('mensagem.sucesso', "Serie, '{$serie->nome}' cadastrado com sucesso!");
 
         /* codigo a cima é o resumo do codigo abaixo
         @var string $nomeSerie Nome da série extraído do corpo da requisição
